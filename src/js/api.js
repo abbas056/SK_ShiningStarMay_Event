@@ -27,6 +27,11 @@ function EventProvider({ children }) {
 
   const weekIndex = userInfo?.data?.weekIndex;
   let isFirstVisitPage = userInfo && userInfo?.data?.isFirstVisitPage;
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const nowDate = `${year}-${month}-${day}`;
 
   useEffect(() => {
     try {
@@ -166,7 +171,8 @@ function EventProvider({ children }) {
           categB: categB?.data,
           categC: categC?.data,
           tickerTape: tickerTape?.data,
-          isLive: isLive,
+          isLive,
+          nowDate,
         }}
       >
         {children}

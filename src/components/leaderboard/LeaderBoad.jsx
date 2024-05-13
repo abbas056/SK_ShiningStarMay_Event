@@ -9,9 +9,12 @@ import Loader from "./../common/Loader";
 import { ApiContext } from "../../js/api";
 
 function LeaderBoard({ topData, restData, array, categ, tab1, tab2, tab3 }) {
-  const { isLoading } = useContext(ApiContext);
+  const { isLoading, nowDate, userInfo } = useContext(ApiContext);
   const restBoard = useRef(null);
   const [active, setActive] = useState(true);
+  const date = "2024-05-16";
+  let weekIndex = userInfo?.weekIndex;
+
   const handleChangeActive = () => {
     setActive((previous) => {
       return !previous;
@@ -21,7 +24,7 @@ function LeaderBoard({ topData, restData, array, categ, tab1, tab2, tab3 }) {
     }
   };
   return (
-    <div className="leaderboard p-rel" style={tab2 || tab1 ? { paddingTop: "10vw", paddingBottom: "7vw" } : { paddingBottom: "7vw" }}>
+    <div className="leaderboard p-rel" style={tab2 || tab1 ? { paddingTop: "10vw", paddingBottom: "7vw" } : { paddingBottom: "10vw" }}>
       <img
         className="lb-heading p-abs m-auto"
         src={tab1 ? accessoriesTag : tab2 ? lbHeading2 : rewardsTag}
@@ -29,11 +32,17 @@ function LeaderBoard({ topData, restData, array, categ, tab1, tab2, tab3 }) {
         style={tab2 ? { width: "45vw", top: "-4vw" } : { width: "60%", height: "22vw", top: "-8vw" }}
       />
       {tab2 ? (
-        <div className="lb-text d-flex al-start jc-center fd-column">
-          <span>- This is a weekly Leaderboard and arranged on the basis of points.</span>
-          <span>- Please click on Guide button to know the points collection.</span>
-        </div>
+        <>
+          <div className="lb-text d-flex al-start jc-center fd-column">
+            <span>- This is a weekly Leaderboard and arranged on the basis of points.</span>
+            <span>- Please click on Guide button to know the points collection.</span>
+          </div>
+          {nowDate == date || weekIndex === 0 ? (
+            <div className="lb-ranking-text d-flex al-center jc-center">New rankings will start from tomorrow</div>
+          ) : null}
+        </>
       ) : null}
+
       {isLoading ? (
         <Loader />
       ) : (
@@ -65,10 +74,11 @@ function LeaderBoard({ topData, restData, array, categ, tab1, tab2, tab3 }) {
                       );
                     })}
                   </div>
+                  <div className="points-received d-flex al-center jc-center">Points Received</div>
                   <div
                     ref={restBoard}
                     className={active ? "rest-position-holders " : "rest-position-holders rest-position-holders-max"}
-                    style={{ height: "79vw" }}
+                    style={{ height: "98vw" }}
                   >
                     {restData &&
                       restData?.map(({ nickname, userScore, userLevel, actorLevel, portrait, userId, expectBeans }, index) => (

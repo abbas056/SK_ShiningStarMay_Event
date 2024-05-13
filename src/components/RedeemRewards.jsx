@@ -27,7 +27,7 @@ function RedeemRewards({ giftIcon, openHistory, history, sethistory, loadMoreHis
   let accessories;
   let weekAccessories;
   let weekIndex = userInfo?.weekIndex;
-  if (weekIndex === 1) {
+  if (weekIndex === 0 || weekIndex === 1) {
     accessories = firstAccessories;
     weekAccessories = week1Accessories;
   } else {
@@ -149,7 +149,6 @@ function RedeemRewards({ giftIcon, openHistory, history, sethistory, loadMoreHis
     <>
       <div className="accessories-store p-rel">
         <img className="headTag" src={headTag} alt="" />
-
         <img className="gift-icon p-abs" src={giftIcon} alt="" onClick={openHistory} />
         <div className="my-tokens d-flex al-center jc-center c-yellow m-auto">My Tokens: {totalTokens ? totalTokens : "0"}</div>
         <div className="redeem-overlay" style={{ visibility: overlay ? "visible" : "hidden" }} onClick={overlayFunc}>

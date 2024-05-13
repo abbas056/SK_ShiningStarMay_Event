@@ -3,6 +3,7 @@ import unknown from "../../../assets/unknown.png";
 import { actorURL, captureImageError, currencySlang, formatData, goTo, userURL } from "../../../js/helpers";
 import { ApiContext } from "../../../js/api";
 import LeaderBoardSlider from "../../leaderboard-slider/LeaderBoardSlider";
+import startIcon from "../../../assets/Star.png";
 
 function RestWinners({ userName, userScore, userAvatar, index, userId, listNumber, userLevel, actorLevel, tab1, tab2, tab3, desc }) {
   const { isLive } = useContext(ApiContext);
@@ -43,10 +44,9 @@ function RestWinners({ userName, userScore, userAvatar, index, userId, listNumbe
         </div>
       </div>
       {tab2 ? (
-        <div className="points d-flex al-center jc-start">
-          <span>
-            {currencySlang(userScore)} {userScore === 1 ? "Point Received" : "Points Received"}
-          </span>
+        <div className="points d-flex al-center jc-center p-rel">
+          <img className="p-abs" style={{ width: "7vw", left: "-2vw" }} src={startIcon} alt="" />
+          <span>{userScore}</span>
         </div>
       ) : (
         <div className="est-rew d-flex al-center jc-start gap-1" style={{ width: "35vw" }}>

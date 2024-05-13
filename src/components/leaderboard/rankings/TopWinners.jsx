@@ -6,6 +6,7 @@ import frame3 from "../../../assets/frame3.png";
 import { actorURL, captureImageError, currencySlang, estimatedBeans, goTo } from "../../../js/helpers";
 import beanIcon from "../../../assets/bean.png";
 import { ApiContext } from "../../../js/api";
+import startIcon from "../../../assets/Star.png";
 
 function TopWinners({ userName, userScore, userAvatar, userId, index, actorLevel, categ, tab1, tab2 }) {
   const { userInfo, isLive } = useContext(ApiContext);
@@ -13,7 +14,7 @@ function TopWinners({ userName, userScore, userAvatar, userId, index, actorLevel
   let weekIndex = userInfo && userInfo?.weekIndex;
   let rank = index + 1;
 
-  if (weekIndex == 1) {
+  if (weekIndex == 0 || weekIndex == 1) {
     beansPot = userInfo?.beansPotMap?.week_1 ? userInfo?.beansPotMap?.week_1 : 0;
   } else {
     beansPot = userInfo?.beansPotMap?.week_2 ? userInfo?.beansPotMap?.week_2 : 0;
@@ -44,10 +45,9 @@ function TopWinners({ userName, userScore, userAvatar, userId, index, actorLevel
               <span>{estimatedBeans(rank, beansPot, categ, tab2)}</span>
             </div>
           </div>
-          <div className="points">
-            <span>
-              {currencySlang(userScore)} <>{userScore === 1 ? "Point Received" : "Points Received"}</>
-            </span>
+          <div className="points d-flex al-center jc-center p-rel">
+            <img className="p-abs" style={{ width: "7vw", left: "-2vw" }} src={startIcon} alt="" />
+            <span>{userScore} </span>
           </div>
         </div>
       </div>

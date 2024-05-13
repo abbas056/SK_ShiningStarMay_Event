@@ -527,14 +527,25 @@ $standardWidth: 750;
     margin: 0 auto;
     font-weight: bold;
   }
+  .lb-ranking-text {
+    font-size: 3.5vw;
+    padding: 3vw 0;
+    color: yellow;
+  }
   .rank-section {
     width: 100%;
     .rank-section-inner {
-      width: 100%;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: end;
+      gap: 2vw;
+      margin: 0 auto;
       //Top Winners
       .top-position-holders {
         background-size: 100% 100%;
-        width: 85%;
+        width: 95%;
         display: flex;
         margin: 0 auto;
         .user-container {
@@ -625,7 +636,7 @@ $standardWidth: 750;
             }
             .bottom-info {
               .username {
-                font-size: 3vw;
+                font-size: 2vw;
                 text-align: center;
                 overflow: hidden;
                 white-space: nowrap;
@@ -638,9 +649,16 @@ $standardWidth: 750;
             .score-box {
               font-size: 1.8vw;
               .points {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                background-image: url(./assets/Points-bg.png);
+                background-size: 100% 100%;
+                width: 20vw;
+                height: 5vw;
+                font-size: 2vw;
+                margin-bottom: -4vw;
+                font-weight: bold;
+              }
+              .score {
+                margin-bottom: 1vw;
               }
             }
 
@@ -651,15 +669,26 @@ $standardWidth: 750;
           }
         }
       }
+      .points-received {
+        background-image: url(./assets/Points-received-bg.png);
+        background-size: 100% 100%;
+        width: 30vw;
+        padding: 1vw;
+        height: 4vw;
+        font-size: 3vw;
+        margin-right: 5vw;
+        font-weight: bold;
+      }
       // Bottom Winners
       .rest-position-holders {
-        width: 85%;
+        width: 95%;
         display: flex;
         flex-direction: column;
         gap: 1vw;
         font-size: 2.5vw;
         overflow: hidden;
         margin: 0 auto;
+
         .users-details-onward {
           background-image: url(./assets/Leaderboard-strip.png);
           background-size: 100% 100%;
@@ -714,10 +743,12 @@ $standardWidth: 750;
             }
           }
           .points {
-            background-color: #3b0908;
-            border-radius: 5vw;
-            padding: 1.5vw 3vw;
-            font-size: 2vw;
+            background-image: url(./assets/Points-bg.png);
+            background-size: 100% 100%;
+            width: 20vw;
+            height: 5vw;
+            font-size: 2.2vw;
+            font-weight: bold;
           }
           .est-rew {
             width: 26vw;
@@ -849,6 +880,7 @@ $standardWidth: 750;
   position: absolute;
   left: 0;
   right: 0;
+  bottom: 0;
   img {
     width: 25vw;
   }
